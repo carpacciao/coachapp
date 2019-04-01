@@ -23,7 +23,7 @@
       </v-list>
       <v-list class="pt-0" dense>
         <v-divider></v-divider>
-        <v-list-tile v-for="item in items" :key="item.title">
+        <v-list-tile v-for="item in items" :key="item.title" @click="console.log('click')">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -47,16 +47,6 @@ export default {
         { title: 'About', icon: 'question_answer' }
       ]
     }
-  },
-  updated () {
-    const body = document.body
-    const nav = document.getElementsByClassName('v-toolbar v-toolbar--fixed')[0]
-    body.style.paddingTop = `${nav.clientHeight}px`
-  },
-  mounted () {
-    const body = document.body
-    const nav = document.getElementsByClassName('v-toolbar v-toolbar--fixed')[0]
-    body.style.paddingTop = `${nav.clientHeight}px`
   }
 }
 </script>
