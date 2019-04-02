@@ -24,15 +24,32 @@ const router = new Router({
       meta: {
         desc: 'Coding App - Authentification'
       }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Auth,
+      meta: {
+        desc: 'Coding App - Registering'
+      }
     }
   ]
 })
 
+// auth middleware
 router.beforeEach((to, from, next) => {
-  if (!Store.state.session.logged && to.path !== '/auth') {
-    next(false)
+  if (!Store.state.session.logged) {
+    if (to.path === '/auth' || to.path === '/register') {
+      next()
+    } else {
+      next(false)
+    }
   } else {
-    next()
+    if (to.path === '/auth' || to.path === '/register') {
+      next(false)
+    } else {
+      next()
+    }
   }
 })
 
