@@ -23,7 +23,7 @@
       </v-list>
       <v-list class="pt-0" dense>
         <v-divider></v-divider>
-        <v-list-tile v-for="item in items" :key="item.title" @click="console.log('click')">
+        <v-list-tile v-for="item in items" :key="item.title" @click="setLog(true)">
           <v-list-tile-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-tile-action>
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   props: ['title'],
   data () {
@@ -47,6 +49,9 @@ export default {
         { title: 'About', icon: 'question_answer' }
       ]
     }
+  },
+  methods: {
+    ...mapActions('session', ['setLog'])
   }
 }
 </script>

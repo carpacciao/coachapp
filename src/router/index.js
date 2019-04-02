@@ -29,15 +29,11 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-
   if (!Store.state.session.logged && to.path !== '/auth') {
     next(false)
   } else {
     next()
   }
-  // if (Store.state.session.logged === false && router.currentRoute.fullPath !== '/auth') {
-  //   router.push('/auth')
-  // }
 })
 
 export default router

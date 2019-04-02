@@ -10,6 +10,7 @@ export const SessionModule = {
   },
   actions: {
     setLog (context, logged) {
+      console.log(logged)
       context.commit('setLog', logged)
     }
   },
